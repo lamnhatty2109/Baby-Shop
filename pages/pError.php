@@ -4,8 +4,23 @@
     {
         switch ($_GET["id"]){
             case 1:
-                echo "Tên đăng  nhập và mật khẩu không tồn tại";
+                echo "<span>Tên đăng  nhập và mật khẩu không tồn tại</span>";
             break;
+            case 2:
+                echo "<span>Không tìm thấy sản phẩm nào</span>";
+            break;
+            case 3:
+                echo "<span>Bạn cần nhập đủ thông tin giá</span>";
+            break;
+            default: 
+                echo "";
+        break;
         }
     }
 ?>
+
+<style>
+    h1, span{
+        color: white;
+    }
+</style>

@@ -40,37 +40,45 @@ $_SESSION["path"] = $_SERVER["REQUEST_URI"];
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                 <?php
                 $a = 1;
-                if (isset($_GET["a"]) == true)
-                    $a = $_GET["a"];
-                switch ($a) {
-                    case 1:
-                        include "pages/pIndex.php";
-                        break;
-                    case 2:
-                        include "pages/pSanPhamTheoHang.php";
-                        break;
-                    case 3:
-                        include "pages/pSanPhamTheoLoai.php";
-                        break;
-                    case 4:
-                        include "pages/pChiTiet.php";
-                        break;
-                    case 5:
-                        include "pages/GioHang/pIndex.php";
-                        break;
-                    case 6:
-                        include "pages/TaoTaiKhoan/pIndex.php";
-                        break;
-                    default:
-                        include "pages/pError.php";
-                        break;
+
+                if (isset($_GET["key"]) == true) {
+                    $key = $_GET["key"];
+                    include "pages/pSanPhamTheoTen.php";
+                } else {
+                    if (isset($_GET["a"]) == true)
+                        $a = $_GET["a"];
+                    switch ($a) {
+                        case 1:
+                            include "pages/pIndex.php";
+                            break;
+                        case 2:
+                            include "pages/pSanPhamTheoHang.php";
+                            break;
+                        case 3:
+                            include "pages/pSanPhamTheoLoai.php";
+                            break;
+                        case 4:
+                            include "pages/pChiTiet.php";
+                            break;
+                        case 5:
+                            include "pages/GioHang/pIndex.php";
+                            break;
+                        case 6:
+                            include "pages/TaoTaiKhoan/pIndex.php";
+                            break;
+                        case 7:
+                            include "pages/pSanPhamTheoTen.php";
+                            break;
+                        default:
+                            include "pages/pError.php";
+                            break;
+                    }
                 }
                 ?>
-
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 search-box">
                 <?php
-                    include "pages/pTimKiem.php";
+                include "pages/pTimKiem.php";
                 ?>
             </div>
         </div>

@@ -272,6 +272,10 @@ h3{
     border-radius: 5px;
 }
 
+tr{
+    padding: 10px !important;
+}
+
 /* body{
     font-family: tahoma, helvetica, arial, sans-serif;
     font-size: 10px;
