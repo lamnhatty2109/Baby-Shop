@@ -1,0 +1,99 @@
+body{
+    font-family: tahoma, helvetica, arial, sans-serif;
+    font-size: 10px;
+    background: url(../img/page_bg.gif);
+    margin: 0px;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+}
+#header{
+    text-align: center;
+    font-size: 25px;
+    background-color: #ff0066;
+    padding: 9px;
+    font-weight: bold;
+    height: 40px;
+}
+#header a{
+    color: #fff;
+}
+
+#menu{
+    background-color: #0066ff;
+
+    font-size: 15px;
+    height: 51px;
+}
+#mMenu{
+    
+    width:75%;
+    color: #fff;
+    font-weight: bold;
+}
+#mMenu a{
+    color: #fff;
+    display: inline-block;
+    padding: 16px;;
+    font-weight: bold;
+}
+#mMenu a:hover{
+    background: #C80000;
+
+}
+
+#login{
+    float: right;
+    margin-top: -35px;
+    margin-right: 25px;
+    font-weight: bold;
+    color: #FFF;
+}
+#footer{
+    clear: both;
+    background-color: rgba(13, 61, 150, 0.795);
+    padding: 8px 8px 5px 8px;
+    text-align: center;
+    border-bottom: 2px solid #FFF;
+    font-weight: bold;
+    color: #FFF;
+}
+#content{
+    margin-bottom: 15px;
+}
+#content h1{
+    color: #ff0000;
+    transform: translate(550px);
+}
+#content img{
+    margin: auto;
+}
+#content table{
+    margin: auto;
+}
+#content span{
+    width: 150px;
+    font-size: 18px;
+    text-align: right;
+    display: inline-block;
+    margin-right: 20px;
+}
+fieldset legend{
+    font-size: 15px;
+    text-align: center;
+}
+table th{
+    background-color: #088fbd;
+    color: #fff;
+    height: 25px;
+    font-size: 15px;
+}
+table{
+    border-color: #088fbd;
+    border-collapse: collapse;
+
+}
+table, th, td{
+    border: 2px solid blue;
+}
