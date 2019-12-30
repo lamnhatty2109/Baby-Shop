@@ -1,24 +1,25 @@
-<h1>Quản lý đơn đặt hàng</h1>
+<h1>Quản Lí Đơn Đặt Hàng</h1>
 <?php
-    $a=1;
+    $a  =1;
     if(isset($_GET["a"]))
     {
-        $a=$_GET["a"];
-
+        $a = $_GET["a"];
     }
-    switch ($a)
-    {
+    switch ($a) {
         case 1:
             include "pages/qlDonDatHang/pDanhSach.php";
-        break;
+            break;
         case 2:
             include "pages/qlDonDatHang/pChiTietDonDatHang.php";
-        break;
+            break;
         case 3:
             include "pages/qlDonDatHang/pThemMoi.php";
-        break;
+            break;
+        case 4:
+            include "pages/qlDonDatHang/pTimKiem.php";
+            break;
         default:
             include "pages/pError.php";
-    break;
+            break;
     }
 ?>

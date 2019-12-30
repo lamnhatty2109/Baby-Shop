@@ -1,7 +1,7 @@
 <?php
     session_start();
     include "../../lib/DataProvider.php";
-    if(isset($_POST["us"]))
+    if(isset($_POST["us"]) && $_POST["captcha_code"] == $_SESSION["captcha_code"])
     {
         $us=$_POST["us"];
         $ps=$_POST["ps"];
@@ -33,8 +33,7 @@
             DataProvider::ChangeURL("../../index.php");
         }
     }
-    else
-    {
-        DataProvider::ChangeURL("../../index.php?a=404");
+    else{
+        DataProvider::ChangeURL("../../index.php?a=404&id=10");
     }
 ?>

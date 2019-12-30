@@ -5,13 +5,14 @@ if (isset($_GET["id"])) {
 } else {
     DataProvider::ChangeURL("index.php?a=404");
 }
-$sql = "SELECT s.MaSanPham, s.TenSanPham, s.GiaSanPham, s.SoLuongTon, s.SoLuocXem, s.HinhURL, s.MoTa, h.TenHangSanXuat, l.TenLoaiSanPham
+$sql = "SELECT s.MaSanPham, s.TenSanPham, s.GiaSanPham, s.SoLuongBan, s.SoLuocXem, s.HinhURL, s.MoTa, h.TenHangSanXuat, l.TenLoaiSanPham, l.MaLoaiSanPham
     FROM SanPham s, HangSanXuat h, LoaiSanPham l
     WHERE s.BiXoa = 0 AND s.MaHangSanXuat=h.MaHangSanXuat AND s.MaLoaiSanPham = l.MaLoaiSanPham AND s.MaSanPham=$id";
 
 $result = DataProvider::ExecuteQuery($sql);
 $row = mysqli_fetch_array($result);
-
+$slx = $row["SoLuocXem"];
+$MaLoaiSanPham = $row["MaLoaiSanPham"];
 if ($result == null) {
     DataProvider::ChangeURL("index.php?a=404");
 }
@@ -45,8 +46,8 @@ if ($result == null) {
                     <span class="data"><?php echo $row["TenLoaiSanPham"]; ?></span>
                 </div>
                 <div>
-                    <span class="label">Số lượng:</span></span>
-                    <span class="data"><?php echo $row["SoLuongTon"]; ?> sản phẩm</span>
+                    <span class="label">Số lượng bán:</span></span>
+                    <span class="data"><?php echo $row["SoLuongBan"]; ?> sản phẩm</span>
                 </div>
                 <div>
                     <span class="label">Số lược xem:</span>
@@ -72,11 +73,36 @@ if ($result == null) {
             </div>
         </div>
 
+        <!-- 5 sản phẩm cùng loại -->
+        <h2 style="margin-top: 10px"><img src="img/eye-icon.png"/>Sản phẩm cùng loại</h2>
+        <?php
+        $sql = "SELECT * FROM SanPham WHERE BiXoa = 0 AND MaLoaiSanPham = $MaLoaiSanPham LIMIT 0, 5";
+        $result = DataProvider::ExecuteQuery($sql);
+        ?>
+
+        <div class="row">
+            <?php
+            while ($row = mysqli_fetch_array($result)) {
+            ?>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="box">
+
+                        <a href="index.php?a=4&id=<?php echo $row["MaSanPham"]; ?>">
+                            <img src="images/<?php echo $row["HinhURL"]; ?>" />
+                            <div class="pname"> <?php echo $row["TenSanPham"]; ?></div>
+                            <div class="pprice">Giá: <?php echo $row["GiaSanPham"]; ?>đ</div>
+                        </a>
+                    </div>
+
+                </div>
+            <?php
+            }
+            ?>
+        </div>
     </div>
 </div>
 <?php
-$SoLuocXem = $row["SoLuocXem"] + 1;
-$sql = "UPDATE SanPham SET SoLuocXem = $SoLuocXem
-            WHERE MaSanPham = $id";
+$SoLuocXem = $slx + 1;
+$sql = "UPDATE SanPham SET SoLuocXem = $SoLuocXem WHERE MaSanPham = $id";
 DataProvider::ExecuteQuery($sql);
 ?>

@@ -2,10 +2,9 @@
     include "../../../lib/DataProvider.php";
     if(isset($_GET["txtTen"]))
     {
-        $ten=$_GET["txtTen"];
-        $sql="INSERT INTO HangSanXuat(TenHangSanXuat, BiXoa) VALUES('$ten',0)";
+        $ten = $_GET["txtTen"];
+        $sql = "INSERT INTO HangSanXuat(TenHangSanXuat, BiXoa) VALUES('$ten',0)";
         DataProvider::ExecuteQuery($sql);
-
     }
-    DataProvider::ChangeURL("../../index.php?c=4");
+    DataProvider::changeURL("../../index.php?c=4");
 ?>

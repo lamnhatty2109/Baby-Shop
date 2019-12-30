@@ -36,19 +36,25 @@
             }
             else
             {
+                //Đã  có sản phẩm trong giỏ hàng rồi
+                //Cần kiểm tra sản phẩm đó đã tồn tại trong giỏ hàng chưa
+                //nếu đã có rồi thì chỉ cần cập nhật số lượng lên 1 
+                //nếu chưa thì thêm mới sản phẩm vào giỏ hàng
                 for($i=0;$i < count($this->listProduct);$i++)
                 {
+                    //hàm này để dừng tại sản phẩm đó trong listproduct
                     if($this->listProduct[$i]->id==$id)
                         break;
                 }
                 if($i==count($this->listProduct))
                 {
+                    //nếu đã duyệt hết mảng mà chưa có phần tử thì tạo mới
                     $p=new Product();
                     $p->id=$id;
                     $p->num=1;
                     $this->listProduct[]=$p;
                 }
-                else{
+                else{//nếu có rồi thì cập nhật sl lên 1
                     $this->listProduct[$i]->num++;
                 }
             }

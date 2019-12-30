@@ -12,6 +12,15 @@
             case 3:
                 echo "<span>Bạn cần nhập đủ thông tin giá</span>";
             break;
+            case 4:
+                echo "<span>Giá không hợp lệ</span>";
+            break;
+            case 5:
+                echo "<span>Không tìm thấy sản phẩm nào với tên trên</span>";
+            break;
+            case 10:
+                echo "<span>Capcha không hợp lệ</span>";
+            break;
             default: 
                 echo "";
         break;

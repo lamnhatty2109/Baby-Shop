@@ -1,6 +1,6 @@
 <h2><img src="img/new-icon.png"/>Sản phẩm mới nhất</h2>
 <?php
-$sql = "SELECT * FROM SanPham WHERE BiXoa = 0 ORDER BY NgayNhap DESC LIMIT 0, 4";
+$sql = "SELECT * FROM SanPham WHERE BiXoa = 0 ORDER BY NgayNhap DESC LIMIT 0, 10";
 $result = DataProvider::ExecuteQuery($sql);
 ?>
 

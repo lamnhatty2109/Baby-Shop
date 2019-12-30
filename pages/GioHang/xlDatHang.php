@@ -28,27 +28,36 @@
 
         $sql="INSERT INTO DonDatHang(MaDonDatHang, NgayLap,TongThanhTien,MaTaiKhoan, MaTinhTrang) VALUES('$maDonDatHang','$ngayLap',$tongGia,$maTaiKhoan,$maTinhTrang)";
         DataProvider::ExecuteQuery($sql);
-        $soLuongSanPham=count($gioHang->listProDuct);
+
+        $soLuongSanPham=count($gioHang->listProduct);
         for($i=0;$i<$soLuongSanPham; $i++)
         {
-            $id=$gioHang->listProDuct[$i]->id;
-            $sl=$gioHang->listProDuct[$i]->num;
+            $id=$gioHang->listProduct[$i]->id;
+            $sl=$gioHang->listProduct[$i]->num;
 
-            $sql="SELECT GiaSanPham, SoLuongTon FROM SanPham Where MaSanPham = $id";
+            $sql="SELECT GiaSanPham, SoLuongTon, SoLuongBan FROM SanPham Where MaSanPham = $id";
             $result=DataProvider::ExecuteQuery($sql);
 
             $row=mysqli_fetch_array($result);
             $soLuongTonHienTai=$row["SoLuongTon"];
             $giaSanPham=$row["GiaSanPham"];
-
+            $soLuongBanHienTai = $row["SoLuongBan"];
             $sttChiTietDonDatHang = sprintf("%02s",$i);
             $maChiTietDonDatHang=$maDonDatHang.$sttChiTietDonDatHang;
 
-            $sql="INSERT INTO ChiTietDonDatHang(MaChiTietDonHang, SoLuong, HiaBan, MaDonDatHang, MaSanPham)
+            $sql="INSERT INTO ChiTietDonDatHang(MaChiTietDonDatHang, SoLuong, GiaBan, MaDonDatHang, MaSanPham)
                     VALUES('$maChiTietDonDatHang',$sl,$giaSanPham,'$maDonDatHang',$id)";
             DataProvider::ExecuteQuery($sql);
+            
+            $soLuongMoi = $soLuongTonHienTai - $sl;
+            $sql = "UPDATE SanPham SET SoLuongTon = $soLuongMoi WHERE MaSanPham = $id";
+            DataProvider::ExecuteQuery($sql);
 
+            $soLuongBan = $soLuongBanHienTai + $sl;
+            $sql = "UPDATE SanPham SET SoLuongBan = $soLuongBan WHERE MaSanPham = $id";
+            DataProvider::ExecuteQuery($sql);
         }
+        
         unset($_SESSION["GioHang"]);
         DataProvider::ChangeURL("../../index.php?a=5&sub=2");
 

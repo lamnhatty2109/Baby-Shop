@@ -12,7 +12,7 @@ if(isset($_GET["key"]))
 
     if($row==null)
     {
-        DataProvider::ChangeURL("../index.php?a=404&id=3");
+        DataProvider::ChangeURL("../index.php?a=404&id=5");
     }
     else
     {
@@ -30,7 +30,7 @@ else if(isset($_GET["minPrice"]) && isset($_GET["maxPrice"]))
 
     if($row==null)
     {
-        DataProvider::ChangeURL("../index.php?a=404&id=3");
+        DataProvider::ChangeURL("../index.php?a=404&id=4");
     }
     else
     {

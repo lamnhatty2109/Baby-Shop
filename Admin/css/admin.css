@@ -97,3 +97,7 @@ table{
 table, th, td{
     border: 2px solid blue;
 }
+
+.add{
+    padding: 10px;
+}

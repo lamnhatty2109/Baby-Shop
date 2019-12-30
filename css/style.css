@@ -26,6 +26,10 @@ html *{
     height: 35px;
 }
 
+input{
+    border: none;
+}
+
 .header input[type=button]:hover, input[type=submit]:hover{
     color: blue;
     border: 1px solid blue;
@@ -205,7 +209,7 @@ h2:before {
 }
 
 .chitietright .price{
-    color: red;
+    color: red; 
 }
 
 .chitietleft img{
@@ -264,16 +268,30 @@ h3{
     color: violet;
 }
 
+.quanlygiohang td{
+    color: white;
+}
+
 .quanlygiohang form{
     padding: 10px;
 }
 
 .quanlygiohang input{
     border-radius: 5px;
+    padding-left: 7px;
 }
 
-tr{
-    padding: 10px !important;
+th, td{
+    padding: 10px;
+}
+
+.pprice{
+    color: rgb(233, 70, 70);
+    margin: 5px 0px;
+}
+
+table{
+    width: 100%;
 }
 
 /* body{
